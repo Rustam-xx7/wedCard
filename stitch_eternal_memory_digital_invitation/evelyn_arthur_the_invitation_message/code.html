@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Libre+Franklin:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e3e2df",
+                    "forest-green": "#2D3E33",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1b1c1a",
+                    "cream-foundation": "#FDFCF8",
+                    "tertiary-fixed": "#d4e7d8",
+                    "inverse-primary": "#e9c349",
+                    "surface-tint": "#735c00",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#d4af37",
+                    "secondary-container": "#fecdb4",
+                    "on-primary-fixed-variant": "#574500",
+                    "secondary": "#7a5642",
+                    "secondary-fixed": "#ffdbca",
+                    "inverse-on-surface": "#f2f1ed",
+                    "tertiary-container": "#a5b8a9",
+                    "surface-container-lowest": "#ffffff",
+                    "soft-ink": "#4A4A4A",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#faf9f5",
+                    "on-tertiary-container": "#38493e",
+                    "surface-container": "#efeeea",
+                    "outline": "#7f7663",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#241a00",
+                    "on-secondary-container": "#795541",
+                    "primary-fixed-dim": "#e9c349",
+                    "surface-container-high": "#e9e8e4",
+                    "inverse-surface": "#2f312e",
+                    "primary": "#735c00",
+                    "outline-variant": "#d0c5af",
+                    "on-surface-variant": "#4d4635",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#ecbda4",
+                    "dusty-rose": "#DCAE96",
+                    "surface-variant": "#e3e2df",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#2e1506",
+                    "surface-container-low": "#f4f4f0",
+                    "surface-bright": "#faf9f5",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#0e1f15",
+                    "surface-dim": "#dbdad6",
+                    "primary-fixed": "#ffe088",
+                    "on-surface": "#1b1c1a",
+                    "tertiary": "#516356",
+                    "on-primary-container": "#554300",
+                    "background": "#faf9f5",
+                    "tertiary-fixed-dim": "#b8cbbc",
+                    "champagne-gold": "#D4AF37",
+                    "on-secondary-fixed-variant": "#603f2d",
+                    "on-tertiary-fixed-variant": "#394b3f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "gutter": "16px",
+                    "margin-desktop": "64px",
+                    "base-unit": "8px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "label-caps": ["Libre Franklin"],
+                    "body-md": ["Libre Franklin"],
+                    "body-lg": ["Libre Franklin"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "300"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .parchment-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .maroon-texture {
+            background-color: #4A0E0E; /* Deep Maroon for high-end contrast */
+            background-image: url("https://www.transparenttextures.com/patterns/linen-paper.png");
+        }
+        .path-dash {
+            stroke-dasharray: 8 8;
+            animation: dash-flow 20s linear infinite;
+        }
+        @keyframes dash-flow {
+            to { stroke-dashoffset: -200; }
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-champagne-gold/30">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full flex justify-between items-center px-margin-mobile h-16 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-outline-variant/30 z-50">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer" data-icon="menu">menu</span>
+</div>
+<div class="text-headline-sm font-headline-sm text-champagne-gold dark:text-primary-fixed italic select-none">
+            E&amp;A
+        </div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer" data-icon="favorite">favorite</span>
+</div>
+</header>
+<main class="relative pt-16 pb-32">
+<!-- Hero Section / Winding Path Background Layer -->
+<div class="absolute inset-0 pointer-events-none z-0">
+<svg class="w-full h-full opacity-20" fill="none" viewbox="0 0 400 1200" xmlns="http://www.w3.org/2000/svg">
+<path class="path-dash" d="M200 0C200 150 50 250 50 400C50 550 350 650 350 800C350 950 200 1050 200 1200" stroke="#D4AF37" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- Section 1: Introduction (Parchment) -->
+<section class="relative z-10 px-margin-mobile md:px-margin-desktop py-section-gap flex flex-col items-center text-center parchment-texture min-h-[618px] justify-center">
+<div class="fade-in-section max-w-2xl mx-auto space-y-gutter">
+<div class="flex justify-center mb-8">
+<span class="material-symbols-outlined text-champagne-gold text-5xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+</div>
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg text-forest-green mb-4">Our Hearts Join</h1>
+<div class="w-16 h-[1px] bg-champagne-gold mx-auto mb-8"></div>
+<p class="text-body-lg font-body-lg text-soft-ink leading-relaxed px-4">
+                    Together with our families, we invite you to share in our joy as we exchange our vows and begin our new life together. Your presence is the greatest gift we could receive.
+                </p>
+<div class="pt-12">
+<h2 class="text-headline-md font-headline-md italic text-primary">Evelyn &amp; Arthur</h2>
+<p class="text-label-caps font-label-caps text-outline tracking-[0.2em] mt-2">ESTABLISHED TWENTY TWENTY FIVE</p>
+</div>
+</div>
+<!-- Floral Line Art (Left) -->
+<div class="absolute left-0 bottom-10 opacity-40 select-none hidden md:block">
+<img class="w-64 h-64 object-contain" data-alt="Delicate minimalist fine line art of wedding botanical wildflowers and ferns etched in soft champagne gold on a transparent background. The style is sophisticated and ethereal, reflecting a high-end romantic wedding aesthetic with clean, elegant strokes that feel like a hand-drawn invitation illustration from a premium boutique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdk1Ow8wNzxoPXiKAhJN-fkHq3VqF-bgEDzabo6o490XILcR60AV8oC-L45ocQy1Ew_55nHkpeVvsQYFEUzTixMmNY94hvUay9mztdoAw4tAguO5NB2oFvSNBI21OSTv4Ywt6FiXzs7Df04UMyccFShOuo3TBISUg2jriKiTdjA2QMZtxqwvQlMtkje32r73scstrniF3-tLB_q7LUJyBVsMZtZxAe5BkeNjj3P2281UPilmgrt4QLb6DSwgFToRWC-c2enmfpgtg"/>
+</div>
+</section>
+<!-- Section 2: Visual Impact (Maroon Texture Bento-Style) -->
+<section class="maroon-texture py-section-gap relative overflow-hidden">
+<div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-7 fade-in-section">
+<div class="relative group overflow-hidden rounded-xl">
+<img class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A breathtaking cinematic shot of a romantic wedding ceremony captured at golden hour. Warm amber sunlight filters through the branches of ancient oak trees, creating a soft, ethereal glow. The atmosphere is deeply intimate, with a gentle focus on delicate floral arrangements and textured fabrics. The color palette features rich cream tones complemented by elegant deep maroon accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqN6LUOgjYvJ2T-8R76JBUetbKYHsDx9cVmXsTqW2mcuu4TErBw35hN6l_tiRytW_TEOWqDyMLbQyvPV4tbrr8XoVuilodrrxvz1NY2eXqonD9Xrs9XSgwjmKzYEuxhhHuaaEkRXOk_6qL0_1EsiYwhWOuLjeuuFLjCXU-CaRUIOkwMW1Xapgj14COeBIY-ARWMnPG1l8gQm-h1glJEpqIjjsq7n1uAa6GKDpIhdIsoq6IrdY36Tw0TgZeXt0z8VTKovI6H0X_V6s"/>
+<div class="absolute inset-0 bg-forest-green/20 group-hover:bg-forest-green/0 transition-colors duration-500"></div>
+</div>
+</div>
+<div class="md:col-span-5 space-y-6 fade-in-section">
+<div class="bg-cream-foundation/5 backdrop-blur-sm p-8 rounded-xl border border-champagne-gold/20">
+<p class="text-label-caps font-label-caps text-secondary-fixed mb-4">THE CELEBRATION</p>
+<h3 class="text-headline-md font-headline-md text-secondary-fixed mb-4">A Night Under the Stars</h3>
+<p class="text-body-md font-body-md text-surface-container-low/90 leading-relaxed">
+                            Join us for an evening of enchantment as we celebrate our union amidst the whispering pines and the soft glow of candlelight.
+                        </p>
+<button class="mt-8 px-10 py-4 bg-champagne-gold hover:bg-primary-fixed-dim text-forest-green font-label-caps rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg active:scale-95">
+                            SAVE THE DATE
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Details (Bento Grid) -->
+<section class="bg-background py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Bento Item 1 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col items-center text-center fade-in-section border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-champagne-gold mb-4 text-3xl" data-icon="calendar_today">calendar_today</span>
+<h4 class="text-label-caps font-label-caps text-forest-green mb-2">WHEN</h4>
+<p class="text-body-md font-body-md text-soft-ink">September 24th, 2025<br/>Four in the afternoon</p>
+</div>
+<!-- Bento Item 2 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col items-center text-center fade-in-section border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-champagne-gold mb-4 text-3xl" data-icon="location_on">location_on</span>
+<h4 class="text-label-caps font-label-caps text-forest-green mb-2">WHERE</h4>
+<p class="text-body-md font-body-md text-soft-ink">The Ethereal Gardens<br/>Valle de Bravo, Mexico</p>
+</div>
+<!-- Bento Item 3 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col items-center text-center fade-in-section border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-champagne-gold mb-4 text-3xl" data-icon="local_bar">local_bar</span>
+<h4 class="text-label-caps font-label-caps text-forest-green mb-2">ATTIRE</h4>
+<p class="text-body-md font-body-md text-soft-ink">Black Tie Optional<br/>Formal &amp; Elegant</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-background/90 dark:bg-inverse-surface/90 backdrop-blur-lg border-t border-outline-variant/20 rounded-t-full shadow-sm dark:shadow-none">
+<button class="flex flex-col items-center justify-center text-champagne-gold dark:text-primary-fixed scale-110 transition-transform active:scale-95 duration-200 ease-out">
+<span class="material-symbols-outlined" data-icon="mail" style="font-variation-settings: 'FILL' 1;">mail</span>
+<span class="text-label-caps font-label-caps mt-1">Invite</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-outline-variant hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="text-label-caps font-label-caps mt-1">Our Story</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-outline-variant hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-caps font-label-caps mt-1">The Date</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-outline-variant hover:bg-surface-container-low/50 dark:hover:bg-surface-container-highest/10 transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="text-label-caps font-label-caps mt-1">RSVP</span>
+</button>
+</nav>
+<script>
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.add('opacity-70');
+                setTimeout(() => this.classList.remove('opacity-70'), 300);
+            });
+        });
+    </script>
+</body></html>

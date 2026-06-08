@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream-foundation: #FDFCF8;
+  --color-champagne-gold: #D4AF37;
+  --color-dusty-rose: #DCAE96;
+  --color-forest-green: #2D3E33;
+  --color-soft-ink: #4A4A4A;
+  --color-burgundy: #630018;
+  --color-burgundy-light: #800020;
+  --color-deep-maroon: #4A0E0E;
+  --color-surface-container-high: #e9e8e4;
+  --color-surface-container: #efeeea;
+  --color-surface-container-low: #f4f4f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-outline-variant: #d0c5af;
+  --color-on-surface-variant: #4d4635;
+  
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-libre);
+  --font-script: var(--font-script);
+}
+
+/* Custom styles from original designs */
+
+body {
+  background-color: #faf9f5;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  color: #1b1c1a;
+  min-height: 100dvh;
+}
+
+.texture-accent {
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  background-blend-mode: multiply;
+}
+
+.parchment-texture {
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.maroon-texture {
+  background-color: #4A0E0E;
+  background-image: url("https://www.transparenttextures.com/patterns/linen-paper.png");
+}
+
+/* Falling petal animation */
+@keyframes petal-fall {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  50% { transform: translateY(50vh) translateX(20px) rotate(180deg); }
+  100% { transform: translateY(110vh) translateX(-20px) rotate(360deg); opacity: 0; }
+}
+
+.petal {
+  position: fixed;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(to bottom right, #630018, #ba1a1a);
+  border-radius: 100% 0 100% 0;
+  opacity: 0;
+}
+
+/* Floating animation */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: floating 6s ease-in-out infinite;
+}
+
+/* Ken Burns Zooming */
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
+}
+.animate-ken-burns {
+  animation: ken-burns 20s ease-in-out infinite alternate;
+}
+
+/* Grain overlay */
+@keyframes grain-drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-2%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+.bg-grain {
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  opacity: 0.15;
+  animation: grain-drift 20s linear infinite;
+}
+
+/* Dashed path animations */
+.path-dash {
+  stroke-dasharray: 8 8;
+  animation: dash-flow 20s linear infinite;
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -200; }
+}
+
+/* Scroll reveal classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Calendar boxes */
+.calendar-box {
+  border: 1px solid #d0c5af;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4d4635;
+  background: white;
+}
+.calendar-box.active {
+  background: #630018;
+  color: white;
+  border-color: #630018;
+  position: relative;
+}
+.calendar-box.active::after {
+  content: '❤';
+  position: absolute;
+  top: -12px;
+  font-size: 10px;
+  color: #630018;
+}
+
+/* Shape masks */
+.mask-organic-1 {
+  clip-path: polygon(10% 0%, 100% 12%, 90% 100%, 0% 88%);
+}
+.mask-organic-2 {
+  clip-path: polygon(0% 15%, 85% 0%, 100% 85%, 15% 100%);
+}
+.mask-arch {
+  clip-path: polygon(0 100%, 0 20%, 50% 0, 100% 20%, 100% 100%);
+  border-radius: 50% 50% 0 0;
+}
+
+.torn-paper {
+  mask-image: url("data:image/svg+xml,%3Csvg width='500' height='500' viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 Q50,10 100,0 T200,0 T300,5 T400,0 T500,10 L500,500 Q450,490 400,500 T300,500 T200,495 T100,500 T0,490 Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: cover;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='500' height='500' viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 Q50,10 100,0 T200,0 T300,5 T400,0 T500,10 L500,500 Q450,490 400,500 T300,500 T200,495 T100,500 T0,490 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: cover;
+}
+
+/* Envelope 3D Animation classes */
+.envelope-container {
+  perspective: 1000px;
+}
+.envelope-flap {
+  transform-origin: top;
+  transition: transform 1s ease-in-out;
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+}
+.opened-flap {
+  transform: rotateX(-180deg);
+  z-index: 10;
+}

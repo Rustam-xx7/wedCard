@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;family=Libre+Franklin:wght@300;400;600&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
+<style>
+        .font-script { font-family: 'Great Vibes', cursive; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Torn Paper Effect */
+        .torn-paper {
+            mask-image: url("data:image/svg+xml,%3Csvg width='500' height='500' viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 Q50,10 100,0 T200,0 T300,5 T400,0 T500,10 L500,500 Q450,490 400,500 T300,500 T200,495 T100,500 T0,490 Z' fill='black'/%3E%3C/svg%3E");
+            mask-size: cover;
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='500' height='500' viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 Q50,10 100,0 T200,0 T300,5 T400,0 T500,10 L500,500 Q450,490 400,500 T300,500 T200,495 T100,500 T0,490 Z' fill='black'/%3E%3C/svg%3E");
+            -webkit-mask-size: cover;
+        }
+
+        /* Ken Burns Effect */
+        @keyframes ken-burns {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+        .animate-ken-burns {
+            animation: ken-burns 20s ease-in-out infinite alternate;
+        }
+
+        /* Floating Animation */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        /* Background Grain Drifting */
+        @keyframes grain-drift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-2%, -1%); }
+            100% { transform: translate(0, 0); }
+        }
+        .bg-grain {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.15;
+            animation: grain-drift 20s linear infinite;
+        }
+
+        /* Reveal on Scroll */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Winding Path Drawing */
+        .dashed-path {
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            stroke: #D4AF37;
+            fill: none;
+            stroke-width: 2;
+            opacity: 0.4;
+            transition: stroke-dashoffset 0.1s linear;
+        }
+
+        /* Hover Glow Effect */
+        .image-container:hover .glow-accent {
+            filter: blur(20px);
+            opacity: 0.6;
+            transform: scale(1.1);
+        }
+        .image-container:hover img {
+            transform: scale(1.08);
+        }
+        
+        .fade-up-initial {
+            animation: fade-up 1.2s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#516356",
+                        "secondary-fixed-dim": "#ecbda4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#d4e7d8",
+                        "on-tertiary-container": "#38493e",
+                        "on-secondary-fixed": "#2e1506",
+                        "surface-bright": "#faf9f5",
+                        "on-background": "#1b1c1a",
+                        "inverse-on-surface": "#f2f1ed",
+                        "dusty-rose": "#DCAE96",
+                        "surface-container-highest": "#e3e2df",
+                        "outline": "#7f7663",
+                        "inverse-surface": "#2f312e",
+                        "primary-container": "#d4af37",
+                        "on-tertiary-fixed-variant": "#394b3f",
+                        "on-surface-variant": "#4d4635",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#efeeea",
+                        "soft-ink": "#4A4A4A",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#735c00",
+                        "primary": "#735c00",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#faf9f5",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#0e1f15",
+                        "secondary": "#7a5642",
+                        "secondary-container": "#fecdb4",
+                        "surface-dim": "#dbdad6",
+                        "on-secondary-container": "#795541",
+                        "surface-container-high": "#e9e8e4",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-variant": "#e3e2df",
+                        "surface-container-low": "#f4f4f0",
+                        "on-primary-container": "#554300",
+                        "primary-fixed": "#ffe088",
+                        "inverse-primary": "#e9c349",
+                        "on-surface": "#1b1c1a",
+                        "background": "#faf9f5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#b8cbbc",
+                        "cream-foundation": "#FDFCF8",
+                        "forest-green": "#2D3E33",
+                        "secondary-fixed": "#ffdbca",
+                        "outline-variant": "#d0c5af",
+                        "primary-fixed-dim": "#e9c349",
+                        "champagne-gold": "#D4AF37",
+                        "tertiary-container": "#a5b8a9",
+                        "on-secondary-fixed-variant": "#603f2d",
+                        "deep-maroon": "#5D1212"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "gutter": "16px",
+                        "margin-mobile": "24px",
+                        "base-unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Libre Franklin"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-sm": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-caps": ["Libre Franklin"],
+                        "body-lg": ["Libre Franklin"],
+                        "display-lg": ["Playfair Display"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-cream-foundation text-on-surface font-body-md overflow-x-hidden">
+<!-- Background Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none z-[1] bg-grain"></div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-margin-mobile h-16 bg-background/80 backdrop-blur-md border-b border-outline-variant/30 z-50">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="text-headline-sm font-headline-sm text-champagne-gold italic">E&amp;A</h1>
+<span class="material-symbols-outlined text-primary cursor-pointer">favorite</span>
+</header>
+<main class="pb-32 relative z-10">
+<!-- Hero Section with cinematic video -->
+<section class="relative h-[80dvh] md:h-[100dvh] w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-black/30 z-10"></div>
+<!-- Cinematic Background Video (using placeholder image context for visual) -->
+<div class="absolute inset-0 w-full h-full animate-ken-burns">
+<img class="w-full h-full object-cover" data-alt="A cinematic, slow-motion video still of a couple walking through a sun-drenched golden wheat field at sunset. The lighting is warm and ethereal, with soft lens flares and a romantic, high-end film aesthetic. The colors are dominated by champagne gold, soft cream, and deep amber tones, perfectly aligning with the timeless wedding theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGeq1L-p46fHfJnKLH-_DDVYKM_AvFZQRGPjKE2YsiX40LtkKmy4AjMFJJ6ZnEej006rsU6twsreJwFHYZCXia_axSG5FI5AMtgaNMdnzrDnV9dTnrUXPdO9Vmk5DY3BgG1W1QqPGpxip-TPSpHJxdrbXUGm9UYXgTaQ792rXvbbKEZc6rqlBDxZwr-3b7mWKPI65nh9AYLVbztfD7zgYZsKCTc7-gvVSuziuhtiqmFqFRIWO_DIaAojaV2zXF4n8CsZqc5j_Q_-U"/>
+</div>
+<div class="relative z-20 text-center fade-up-initial">
+<p class="text-label-caps font-label-caps text-white mb-4 tracking-widest">A JOURNEY OF TWO HEARTS</p>
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg text-white">Our Love Story</h2>
+<div class="mt-6 w-12 h-[1px] bg-champagne-gold mx-auto"></div>
+</div>
+</section>
+<!-- Story Content Section with Dashed Path -->
+<section class="relative px-margin-mobile md:px-margin-desktop py-section-gap max-w-6xl mx-auto overflow-visible">
+<!-- SVG Winding Path Background -->
+<svg class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 hidden md:block" id="story-svg-path" preserveaspectratio="none" viewbox="0 0 1200 1600">
+<path class="dashed-path" d="M600,0 C800,200 400,400 900,600 C1400,800 200,1000 600,1200 C1000,1400 400,1500 600,1600" id="scroll-path"></path>
+</svg>
+<div class="text-center mb-24 relative z-10 reveal-on-scroll">
+<h3 class="text-headline-md font-headline-md text-forest-green mb-2">Our Story in Frames</h3>
+<p class="text-body-lg font-body-lg text-soft-ink italic">The moments that led us to forever</p>
+</div>
+<!-- Gallery Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 relative z-10">
+<!-- Story Item 1 -->
+<div class="reveal-on-scroll flex flex-col space-y-6" style="transition-delay: 0.1s;">
+<div class="image-container relative">
+<div class="glow-accent absolute inset-0 bg-champagne-gold/20 blur-xl opacity-0 transition-all duration-700"></div>
+<div class="torn-paper aspect-[4/5] overflow-hidden bg-surface shadow-lg animate-float">
+<img class="w-full h-full object-cover transition-transform duration-1000 ease-out" data-alt="A romantic black and white photograph of a man and woman sharing a laugh at a vintage café." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-qafGz1C8-l4NI-sBElz0tSDIztVlmtzPodYKQAb6Kv9gAqatdCbY6ejLI7m3V63M6fqS3VlVxk0mdjrhhk5HFsCog5EGoVDeXd-47n7GrylfQKY-hk45tmmQTSfE3dZnpjt2oWcGizN-HyZk5D3OyhXbPDni6D6ySgCdbf46JXTUcHNxdsMEZQIqMg_c1ttQ7ahHulf8-Vct5bl9psxFMniy7omGXvJEOvhBTRphUVPsjWgitdmqk3bWzikEyoADM9e-AcU57Lw"/>
+</div>
+</div>
+<div class="pl-4 border-l border-champagne-gold">
+<span class="text-label-caps font-label-caps text-champagne-gold uppercase">October 2018</span>
+<h4 class="text-headline-sm font-headline-sm text-forest-green mt-2">The First Encounter</h4>
+<p class="text-body-md font-body-md text-soft-ink mt-2 leading-relaxed">
+                            It began in a small bookstore in London, where we both reached for the same tattered copy of romantic poetry. A shared smile turned into a four-hour conversation over Earl Grey.
+                        </p>
+</div>
+</div>
+<!-- Story Item 2 -->
+<div class="reveal-on-scroll flex flex-col space-y-6 md:mt-32" style="transition-delay: 0.3s;">
+<div class="image-container relative">
+<div class="glow-accent absolute inset-0 bg-champagne-gold/20 blur-xl opacity-0 transition-all duration-700"></div>
+<div class="torn-paper aspect-[4/5] overflow-hidden bg-surface shadow-lg animate-float" style="animation-delay: -1s;">
+<img class="w-full h-full object-cover transition-transform duration-1000 ease-out" data-alt="A couple walking hand-in-hand along a misty coastal cliffside." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDwkds2QH18MKOx0lADgBIfo9T-18EpaVJ8TkZ7wTybZR9-MjJdcCnNIhNtD2xu0y6YOhTP2Ryg3yUzVaEKY8RQnk3UbwZvzadUNR6lm_DV4gg3VlK_FYc4JwqcdCpwkpRIkgMQ2Ah7A0MNms0S7e-kldPdR-T0323qBkyMk0Z2rXmYYIPTUrybMC3oGYH0BalLQ2A7Io2fn9SOzIqlhLjDPFAJuc4ABY-mwBkFxJ5lYRfndIyogv7G8HgMUHPGmKZsxwsPZzF3Gw"/>
+</div>
+</div>
+<div class="pl-4 border-l border-champagne-gold">
+<span class="text-label-caps font-label-caps text-champagne-gold uppercase">June 2020</span>
+<h4 class="text-headline-sm font-headline-sm text-forest-green mt-2">Adventures Together</h4>
+<p class="text-body-md font-body-md text-soft-ink mt-2 leading-relaxed">
+                            From hiking the Scottish Highlands to exploring the hidden alleys of Kyoto, our love grew in the spaces between destinations and the quiet moments of travel.
+                        </p>
+</div>
+</div>
+<!-- Story Item 3 -->
+<div class="reveal-on-scroll flex flex-col space-y-6" style="transition-delay: 0.1s;">
+<div class="image-container relative">
+<div class="glow-accent absolute inset-0 bg-champagne-gold/20 blur-xl opacity-0 transition-all duration-700"></div>
+<div class="torn-paper aspect-[4/5] overflow-hidden bg-surface shadow-lg animate-float" style="animation-delay: -2s;">
+<img class="w-full h-full object-cover transition-transform duration-1000 ease-out" data-alt="An intimate close-up shot of two hands intertwined, showing a delicate engagement ring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHSPOF7U8UC-O_dP_UKNllwY0Jt6X8giB_O7Ba1y-ejc3HHwGH4eMqodeZhIdaC3WM3bcOYeS8ADIj8j4mhD1RoJ_S7njNMaxxD2oI3DyeLv-sV70ENB3gCr-KpBKVHMxSMfbiBgO_w30YXpXMEQdbM8_tFaXxq8F07CXGUmxYBIxlBw1WHivbcFybukHgCJlaTujsQOT3ZXQ7pwkccMQZ6KkBJuUCI9n-hI1g74si0jZo68HnA_bhDLZsP8sLpJCVVhK3jhsj-W8"/>
+</div>
+</div>
+<div class="pl-4 border-l border-champagne-gold">
+<span class="text-label-caps font-label-caps text-champagne-gold uppercase">December 2023</span>
+<h4 class="text-headline-sm font-headline-sm text-forest-green mt-2">The Proposal</h4>
+<p class="text-body-md font-body-md text-soft-ink mt-2 leading-relaxed">
+                            Under the soft glow of winter lights in Central Park, Arthur asked the question that would change our lives forever. A night of champagne and tears of joy.
+                        </p>
+</div>
+</div>
+<!-- Story Item 4 -->
+<div class="reveal-on-scroll flex flex-col space-y-6 md:mt-32" style="transition-delay: 0.3s;">
+<div class="image-container relative">
+<div class="glow-accent absolute inset-0 bg-champagne-gold/20 blur-xl opacity-0 transition-all duration-700"></div>
+<div class="torn-paper aspect-[4/5] overflow-hidden bg-surface shadow-lg animate-float" style="animation-delay: -3s;">
+<img class="w-full h-full object-cover transition-transform duration-1000 ease-out" data-alt="A minimalist and elegant shot of a wedding invitation suite resting on textured cream paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaavEDlgrekcrKGnYs0gTQrXlHxQEckyzXZViW2P7wF8OIgxW4DebHtaDXGBD0nEk71-gv4k9sh76ZokmnIp2dYDXeEAhmHuLnJ7YH8EpeD2z3xZ-4Gn5tnLF4Xc665s2bhH632AVMfIGBb-iFGK3u_QvXslML23Qbb8rtDlNSJX0WdO3aWPKdbYKp-6ScnWfhWhKpwRNUmgMGt7Akbx8VbKnAd1zYRFbHUPmKDGZz0m1VHe6-jxQ5gr1wt3VGZzPW4k6bFsahLCc"/>
+</div>
+</div>
+<div class="pl-4 border-l border-champagne-gold">
+<span class="text-label-caps font-label-caps text-champagne-gold uppercase">Present Day</span>
+<h4 class="text-headline-sm font-headline-sm text-forest-green mt-2">Beginning Forever</h4>
+<p class="text-body-md font-body-md text-soft-ink mt-2 leading-relaxed">
+                            And now, we stand on the threshold of our greatest adventure yet. We are so honored to have you join us as we say 'I do'.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quote Section -->
+<section class="bg-deep-maroon py-32 px-margin-mobile text-center relative overflow-hidden">
+<div class="max-w-3xl mx-auto space-y-6 reveal-on-scroll">
+<span class="material-symbols-outlined text-champagne-gold text-5xl">format_quote</span>
+<h3 class="font-script text-5xl md:text-7xl text-white leading-tight">
+                    "I have found the one whom my soul loves."
+                </h3>
+<p class="text-label-caps font-label-caps text-champagne-gold tracking-[0.3em] uppercase pt-4">
+                    — Song of Solomon 3:4 —
+                </p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-background/90 backdrop-blur-lg border-t border-outline-variant/20 shadow-lg rounded-t-3xl">
+<!-- Invite -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-champagne-gold transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-label-caps font-label-caps">Invite</span>
+</a>
+<!-- Our Story (Active) -->
+<a class="flex flex-col items-center justify-center text-champagne-gold transition-transform active:scale-95 duration-200 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="text-label-caps font-label-caps">Our Story</span>
+</a>
+<!-- The Date -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-champagne-gold transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-label-caps font-label-caps">The Date</span>
+</a>
+<!-- RSVP -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-champagne-gold transition-colors" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="text-label-caps font-label-caps">RSVP</span>
+</a>
+</nav>
+<script>
+        // Reveal elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Winding Path Scroll Animation
+        const path = document.getElementById('scroll-path');
+        const pathLength = path.getTotalLength();
+        path.style.strokeDasharray = pathLength + ' ' + pathLength;
+        path.style.strokeDashoffset = pathLength;
+
+        window.addEventListener('scroll', () => {
+            // Scroll Percent
+            const scrollPercent = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            
+            // Adjust dash offset based on scroll
+            // We start drawing from roughly where the first story item appears
+            const drawLength = pathLength * (scrollPercent * 1.5); // Multiplier to sync drawing with content
+            path.style.strokeDashoffset = pathLength - drawLength;
+
+            // Subtle Parallax for hero text
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.fade-up-initial');
+            if(heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                heroContent.style.opacity = 1 - (scrolled / 600);
+            }
+        });
+    </script>
+</body></html>
